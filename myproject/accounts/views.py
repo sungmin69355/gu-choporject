@@ -20,12 +20,12 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(request, 'login.html', {'error': 'username or password is incorrect'})
+            return render(request, 'login.html', {'error': '아이디 또는 비밀번호를 확인해주세요'})
     else:
         return render(request, 'login.html')
 
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('home')
-    return render(request, 'signup.html')
+        return redirect('posts:list')
+    return render(request, 'logout.html')
