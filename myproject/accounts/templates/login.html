@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block contents %}
-<h1>로그인 페이지 입니다.</h1>
+<!--로그인 되어있는경우-->
+{% if user.is_active %}
+<h2>안녕하세요, {{user.username}}</h2>
+<a href="{% url 'logout' %}">로그아웃</a>
+{{% else %}}
+{% if form.errors  %}
+    <!-- 에러발생시-->
+<p>ID나 PASSWORD가 일치하지 않습니다.</p>
+{% endif %}
+<h1>환영합니다</h1>
 <form method="POST" action="{%url 'login'%}">
         {%csrf_token%}
         username:
@@ -13,4 +22,5 @@
         <br><br>
         <input class="btn btn-primary" type="submit" value="로그인">
     </form>
+{% endif %}
 {% endblock %}
