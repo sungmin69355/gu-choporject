@@ -5,7 +5,7 @@ from django.contrib import auth
 def signup(request):
     if request.method  == 'POST':
         if User.objects.filter(username=request.POST['username']).exists(): #아이디 중복 체크 
-            return render(request, 'signup.html')
+            return render(request, 'signup_error.html')
         if request.POST['password1'] == request.POST['password2']:
             user = User.objects.create_user(
                 request.POST['username'], password= request.POST['password1'])
