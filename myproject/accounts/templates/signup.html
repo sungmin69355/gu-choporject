@@ -1,21 +1,31 @@
 {% extends 'base.html' %}
 
 {% block contents %}
-<br><br><br><br><br>
+<style type="text/css">
+label{
+    align:center;
+}
+</style>
+<br><br><br>
 <form method="POST" action="{%url 'signup'%}">
     {%csrf_token%}
-    <div class="card text-white bg-dark mb-3" style="max-width: 25rem; float: none; margin: 0 auto;">
-    <div class="form-group" align="center">
+    <div class="card text-white bg-dark mb-3" style="max-width: 35rem; float: none; margin: 0 auto;">
+    <div class="form-group" align="center"><br>
+    <h1>Create your account</h1>
     <br><label>ID:</label>
-    <input type="text" style="width:300px" class="form-control" name="username" value="">
-    <br><label>Email:</label>
+    <input type="text" style="width:300px" class="form-control" name="username" value=""><br>
+    <label>성:</label>
+    <input style="width:300px" class="form-control" name="password1" type="password" value=""><br>
+    <label>이름:
+    <input style="width:300px" class="form-control" name="password1" type="password" value=""><br>
+    <label>Email:</label>
     <input type="email" style="width:300px" class="form-control" name="email" value="">
     </div>
     <div class="form-group" align="center">
     <label>PASSWORD:</label>
     <input style="width:300px" class="form-control" name="password1" type="password" value=""><br>
     <label>confirm PASSWORD:</label>
-    <input style="width:300px" class="form-control" name="password2" type="password" value="">
+    <input style="width:300px" class="form-control" name="password2" type="password" value=""><br>
     </div>
     <div class="form-group" align="center">
     <input class="btn btn-dark" type="submit" value="회원가입">

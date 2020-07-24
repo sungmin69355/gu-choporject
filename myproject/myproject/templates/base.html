@@ -4,55 +4,37 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
+
 <body style="background: #bdc3c7; background: -webkit-linear-gradient(to right, #bdc3c7, #2c3e50); background: linear-gradient(to right, #bdc3c7, #2c3e50);">
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">project</a>
+  <a class="navbar-brand" href="{% url 'home' %}">헤진이를 위한 일기</a>
       {% if user.is_active %}
       <!--로그인했을때-->
-      <span class="navbar-text" style="margin-right:10px;">
-      {{ user.username}} 님 환영합니다.
-      </span>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
-      </li>
-  </div>
-  </nav>
-
-
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded justify-content-end">
+  <ul class="nav nav-pills">
+  <li>
+    <a class="btn btn-dark" href="#">글쓰기</a>
+    <a class="btn btn-dark" href="{% url 'signup' %}">회원가입</a>
+    <a class="btn btn-dark" href="{% url 'login' %}">로그인</a>
+    <a class="btn btn-dark" href="{% url 'logout' %}">로그아웃</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ user.username}}님 접속중</a>
+  </li>
+</ul>
+</nav>
+</nav>
       {% else %}
       <!--로그인 안했을떄-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">로그인</a>
-      </li>
-    </ul>
-  </div>
-  </nav>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded justify-content-end">
+  <ul class="nav nav-pills">
+  <li>
+    <a class="btn btn-dark" href="{% url 'signup' %}">회원가입</a>
+    <a class="btn btn-dark" href="{% url 'login' %}">로그인</a>
+  </li>
+</ul>
+</nav>
+</nav>
 
     {% endif %}
 {% block contents %}
