@@ -1,0 +1,37 @@
+{% extends 'base.html' %}<!--위에 상단바-->
+{% block contents %}
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var time = 24*60*60;
+		var timeOrigin = time;
+		var hour = parseInt(timeOrigin/3600);
+
+		timeOrigin = timeOrigin % 3600;
+		var min = parseInt(timeOrigin / 60);
+		var second = timeOrigin % 60;
+
+		$(".exdi_time").text("남은 시간 : "+hour+" : "+min+" : "+second);
+		var timer = setInterval(function(){
+			time--;
+			var timeOrigin = time;
+			var hour = parseInt(timeOrigin/3600);
+			timeOrigin = timeOrigin % 3600;
+			var min = parseInt(timeOrigin/60);
+			var second = timeOrigin%60;
+			$(".exdi_time").text("남은 시간 : "+hour+" : "+min+" : "+second);
+			if(time == 0){
+				console.log(show_diary_id);
+				hidden([show_diary_id]);
+				alert("시간이 지나서 사라져요ㅠㅠ");
+				show([show_diary_id-1]);
+				clearInterval(timer);
+			}
+		}, 1000)
+	});
+</script>
+
+
+{% endblock %}

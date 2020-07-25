@@ -75,9 +75,9 @@
         for(var i = 1; i<= dayy(year, month); i++){ //달력 일수만큼 찍어줌
             var cell = row.insertCell();
             if(year == date.getFullYear() && month-1 == date.getMonth() && i == date.getDate()){
-                cell.innerHTML = "<div class='calendar_cell'>"+i+"</div>"+"<a class='calendar_a_tag_example'>"+"일기"+"</a>";
+                cell.innerHTML = "<div class='calendar_cell'>"+"<a class='calendar_cell' href={% url 'write_diary' %} >"+i+"</a></div>"+"<a class='calendar_a_tag_example'>"+"일기"+"</a>";      
             }else{
-                cell.innerHTML = "<div>"+i+"</div>";
+                cell.innerHTML = "<div><a class='calendar_cell2' href={% url 'write_diary' %}>"+i+"</a></div>";
             }
             
             cnt += 1;
