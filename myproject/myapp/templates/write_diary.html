@@ -18,7 +18,7 @@
 <body>
 			<main>
 				<div class="main_wrap">
-					<form name="write_diary_input" action="" method="POST">
+					<form name="view_diary" action="{% url 'view_diary' %}" method="post">{% csrf_token %}
 					<div class="diary_wrap">
 						<div class="title_input clearfix">
 							
@@ -91,7 +91,6 @@
 							
 						</div>
 						<div class="content_input">
-							<!-- <form id="paper" method="get" action=""> -->
 								<textarea placeholder="일기 내용" onkeyup="autoTextarea(this,2000)" id="text" name="text" rows="4" style="word-wrap: break-word; resize: none; height: 100px; "></textarea>  
 								<br>
 						</div>
