@@ -14,4 +14,9 @@ def write_diary(request):
 
 @csrf_exempt
 def view_diary(request):
+    post = Post(request.POST)
+    post.title = request.GET['title']
+    post.body = request.GET['text']
+    post.pub_date = timezone.datetime.now()
+    post.save()
     return render(request, 'view_diary.html')
