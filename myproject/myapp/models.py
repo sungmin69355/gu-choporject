@@ -1,10 +1,10 @@
 from django.db import models
-from accounts.models import User
+from django.contrib.auth.models import User
 
 class Post(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100)
-    photo = models.ImageField()
+    #photo = models.ImageField()
     content = models.CharField(max_length=4000)
     published = models.DateTimeField(auto_now=True)
     weather = models.CharField(max_length=15)

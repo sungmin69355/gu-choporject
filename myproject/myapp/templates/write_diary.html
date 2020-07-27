@@ -18,25 +18,25 @@
 <body>
 			<main>
 				<div class="main_wrap">
-					<form name="view_diary" action="{% url 'view_diary' %}" method="post">{% csrf_token %}
+					<form action="{% url 'create' %}" method="POST">{% csrf_token %}
 					<div class="diary_wrap">
+					<h6 align ="right">글쓴이 : {{ user.username}}</h6>
 						<div class="title_input clearfix">
-							
 								<label for="inp" class="inp">
 								  <input type="title" name="title" id="inp" placeholder="">
 								  <span class="label">일기 제목</span>
 								  <span class="border"></span>
 								</label>
 							
-							<span class="category_wrap">
-								<form action="" method="POST">
+							<span class="category_wrap"><!--
+								<form action="{% url 'create' %}" method="POST">
 									<select name="category">
 								    <option value="">교환 일기장 선택</option>
 								    <option value="그룹1">그룹1</option>
 								    <option value="그룹2">그룹2</option>
 								    <option value="그룹3">그룹3</option>
 									</select>
-								</form>
+								</form>-->
 							</span>
 						</div>
 						

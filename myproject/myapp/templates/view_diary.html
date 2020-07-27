@@ -33,8 +33,10 @@
 	});
 </script>
 <body>
-<div class="wrap" id="{{ post.id }}">
-{{ post.title }}</div>				
+{% for post in posts.all %}
+    <h1>{{post.username}}, {{ post.title }}</h1>
+{% endfor %}
+	
 </body>
 
 

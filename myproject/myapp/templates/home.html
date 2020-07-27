@@ -93,6 +93,7 @@
         }
     }
 </script>
+{% if user.is_active %}
       <main>
                 <div class="calendar">
                     <table class = "main_calendar" id = "tab">
@@ -117,5 +118,7 @@
                 </div>
         </main>
 <h1><a href="{% url 'view_diary' %}">글보기</a></h1>
+{% else %}
+{% endif %}
 {% endblock %}
 </body>

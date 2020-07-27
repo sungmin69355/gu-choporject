@@ -3,20 +3,28 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from .models import Post
 from accounts.models import User
+from django.db import IntegrityError
+import getpass
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    posts = Post.objects
+    return render(request, 'home.html', {'posts':posts})
 
 def write_diary(request):
     return render(request, 'write_diary.html')
 
 @csrf_exempt
 def view_diary(request):
-    post = Post(request.POST)
-    post.title = request.GET['title']
-    post.body = request.GET['text']
-    post.pub_date = timezone.datetime.now()
-    post.save()
-    return render(request, 'view_diary.html')
+    posts = Post.objects.all().order_by('-id')
+    return render(request, 'view_diary.html',{'posts':posts})
+
+def create(request):
+    posts = Post()
+    posts.title = request.GET.get('title','') 
+    posts.body = request.GET.get('text','') 
+    posts.pub_date = timezone.datetime.now()
+    posts.save()
+    posts = Post.objects.all().order_by('-id')
+    return render(request, 'view_diary.html',{'posts':posts})
